@@ -27,5 +27,5 @@ while True:
 		ch3 = (float(fields[2])-os)/(k_int*k*samples)
 		if len(fields[3]) == 11:					#gambiarra, necessita estudo de non printing characters
 			ch4 = (float(fields[3]-os)/(k_int*k*samples)-os_emp
-#			ch5 = (float[fields[3]-os)/(k_int*k*samples)-os_emp-ch4*0.0025
-#			print "%f	nA	%f	nA	%f	nA	%f	nA" % (ch1, ch2, ch3, ch5)
+			ch5 = (float[fields[3]-os)/(k_int*k*samples)-os_emp-ch4*0.0025
+			print "%f	nA	%f	nA	%f	nA	%f	nA" % (ch1, ch2, ch3, ch5)
