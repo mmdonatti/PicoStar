@@ -3,7 +3,7 @@
 # ########	Software para testes do NSLS ELectrometer 	########
 # ########	Autor : Guilherme Teixeira Semissatto		########
 # ########	Grupo : GAE					########
-# ########	Ultima modificao: 31/08/2016			########
+# ########	Ultima modificao: 06/09/2016			########
 
 import telnetlib
 
