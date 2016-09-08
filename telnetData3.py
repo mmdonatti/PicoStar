@@ -39,7 +39,6 @@ os		=	4430*float(n)				#offset
 k_int		=	(float(p))/3000				#gain multiplo do periodo de integracao 3k us
 samples		=	float(n)				#samples em float
 os_emp		=	2*float(p)/(1000000)+ 0.23		#offset para calibracao
-ch		=	[0,0,0,0]				#free vector to fill
 ch_treated	=	[0,0,0,0]				#free vector to fill
 
 while True:
@@ -53,8 +52,8 @@ while True:
 			except ValueError:
 				auxiliar = 1
 			if (auxiliar == 0 and float(fields[i]) > 0 and len(fields[3]) == 11):			# necessita melhorar o comparador == 11
-				ch[i] = (float(fields[i])-os)/(k_int*k*samples)-os_emp
-				ch_treated[i] = 0.9957777778*ch[i]
+				ch_treated[i] = (float(fields[i])-os)/(k_int*k*samples)-os_emp
+				ch_treated[i] = 0.9957777778*ch_treated[i]
 			else:
 				ch_treated[i] = 0
 		print "%f	nA	%f	nA	%f	nA	%f	nA" % (ch_treated[0], ch_treated[1], ch_treated[2], ch_treated[3])
