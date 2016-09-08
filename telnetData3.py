@@ -23,9 +23,9 @@ if	range_lido == '7':
 elif	range_lido == '6':
 	k	=	2100*42.85*1050.55/(900.2*100.15)	#gain para r = 6
 elif	range_lido == '5':
-	k	=	2100*42.85*1260.4/(900.2*100.15)	#gain para r = 5
+	k	=	2100*42.85*1259.76/(900.2*100.15)	#gain para r = 5
 elif	range_lido == '4':
-	k	=	2100*42.45*1576.18/(900.2*100.15)	#gain para r = 4
+	k	=	2100*42.45*1590.2/(900.2*100.15)	#gain para r = 4
 elif	range_lido == '3':
 	k	=	2100*42.85*2099.69/(900.2*100.15)	#gain para r = 3
 elif	range_lido == '2':
