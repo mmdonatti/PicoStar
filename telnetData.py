@@ -38,9 +38,10 @@ elif	range_lido == '0':
 os		=	4430*float(n)				#offset
 k_int		=	(float(p))/3000				#gain multiplo do periodo de integracao 3k us
 samples		=	float(n)				#samples em float
-os_emp		=	2*float(p)/(1000000)+ 0.23		#offset para calibracao
+#os_emp		=	2*float(p)/(1000000)+ 0.23		#offset para calibracao
+os_emp		=	0
 ch_treated	=	[0,0,0,0]				#free vector to fill
-
+k_new		=	10.4331606217616/1.04901384809064
 while True:
 	if len(tn.read_some()) == 44:
 		data = tn.read_some()
@@ -52,7 +53,7 @@ while True:
 			except ValueError:
 				auxiliar = 1
 			if (auxiliar == 0 and float(fields[i]) > 0 and len(fields[3]) == 11):			# necessita melhorar o comparador == 11
-				ch_treated[i] = (float(fields[i])-os)/(k_int*k*samples)-os_emp
+				ch_treated[i] = (float(fields[i])-os)/(k_int*k*samples*k_new)-os_emp
 				ch_treated[i] = 0.9957777778*ch_treated[i]
 			else:
 				ch_treated[i] = 0
