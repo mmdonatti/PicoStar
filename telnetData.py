@@ -16,14 +16,13 @@ p 		= raw_input("Qual periodo de integracao (p) em us? Opcoes: 400...100000\n")
 log_flag	= raw_input("Deseja salvar os dados ? (s/n)\n")
 if log_flag == 's':
 	filename	 = raw_input("Qual nome do arquivo para salvar os dados? Ex.: log.txt\n")
+	file = open(filename, 'a')
+	file.write("\n\n\n"+"NSLS Electrometer log file from "+str(datetime.datetime.now())+"\n\n\n")
 
 print "O ip e : %s . A porta e %s . O range e %s . O numero de samples e %s . O periodo de integracao e %s  \n" %( ip, porta, range_lido, n, p)
 
 tn = telnetlib.Telnet(ip, porta)
 print "\n \nTelnet Communication On\n \n"
-
-file = open(filename, 'a')
-file.write("\n\n\n"+"NSLS Electrometer log file from "+str(datetime.datetime.now())+"\n\n\n")
 
 if	range_lido == '7':
 	k	=	2100*42.85/(100.15)			#gain para r = 7
@@ -66,4 +65,5 @@ while True:
 			else:
 				ch_treated[i] = 0
 		print "%f	nA	%f	nA	%f	nA	%f	nA" % (ch_treated[0], ch_treated[1], ch_treated[2], ch_treated[3])
-		file.write( str(datetime.datetime.now())+"		"+str(ch_treated[0])+"		nA	"+str(ch_treated[1])+"		nA	"+str(ch_treated[2])+"		nA	"+str(ch_treated[3])+"		nA\n" ) 
+		if log_flag == 's':
+			file.write( str(datetime.datetime.now())+"		"+str(ch_treated[0])+"		nA	"+str(ch_treated[1])+"		nA	"+str(ch_treated[2])+"		nA	"+str(ch_treated[3])+"		nA\n" ) 
