@@ -3,7 +3,7 @@
 # ########	Software para testes do NSLS ELectrometer 	########
 # ########	Autor : Guilherme Teixeira Semissatto		########
 # ########	Grupo : GAE					########
-# ########	Ultima modificao: 06/09/2016			########
+# ########	Ultima modificao: 09/09/2016			########
 
 import telnetlib
 import datetime
@@ -20,7 +20,7 @@ tn = telnetlib.Telnet(ip, porta)
 print "\n \nTelnet Communication On\n \n"
 
 file = open(filename, 'a')
-file.write("##########################New log from"+str(datetime.datetime.now())+"\n\n\n")
+file.write("\n\n\n"+"NSLS Electrometer log file from"+str(datetime.datetime.now())+"\n\n\n")
 
 if	range_lido == '7':
 	k	=	2100*42.85/(100.15)			#gain para r = 7
