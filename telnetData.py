@@ -20,6 +20,7 @@ tn = telnetlib.Telnet(ip, porta)
 print "\n \nTelnet Communication On\n \n"
 
 file = open(filename, 'a')
+file.write("##########################New log from"+str(datetime.datetime.now())+"\n\n\n")
 
 if	range_lido == '7':
 	k	=	2100*42.85/(100.15)			#gain para r = 7
@@ -45,6 +46,7 @@ samples		=	float(n)				#samples em float
 os_emp		=	0
 ch_treated	=	[0,0,0,0]				#free vector to fill
 k_new		=	10.4331606217616/1.04901384809064
+
 while True:
 	if len(tn.read_some()) == 44:
 		data = tn.read_some()
@@ -61,4 +63,4 @@ while True:
 			else:
 				ch_treated[i] = 0
 		print "%f	nA	%f	nA	%f	nA	%f	nA" % (ch_treated[0], ch_treated[1], ch_treated[2], ch_treated[3])
-		file.write( str(datetime.datetime.now())+" "+str(ch_treated[0])+"	nA	"+str(ch_treated[1])+"	nA	"+str(ch_treated[2])+"	nA	"+str(ch_treated[3])+"	nA\n" ) 
+		file.write( str(datetime.datetime.now())+"		"+str(ch_treated[0])+"		nA	"+str(ch_treated[1])+"		nA	"+str(ch_treated[2])+"		nA	"+str(ch_treated[3])+"		nA\n" ) 
