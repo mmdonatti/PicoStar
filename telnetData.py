@@ -13,7 +13,10 @@ porta 		= raw_input("Qual porta para comunicacao Telnet? Default: 5757 \n")
 range_lido 	= raw_input("Qual o range (r) selecionado? Opcoes: 0, 1, 2, 3, 4, 5, 6 e 7\n")
 n 		= raw_input("Qual o numero de samples (n) selecionado? Opcoes: 1...4096\n")
 p 		= raw_input("Qual periodo de integracao (p) em us? Opcoes: 400...100000\n")
-filename 	= raw_input("Qual nome do arquivo para salvar os dados? Ex.: log.txt\n")
+log_flag	= raw_input("Deseja salvar os dados ? (s/n)\n")
+if log_flag == 's':
+	filename	 = raw_input("Qual nome do arquivo para salvar os dados? Ex.: log.txt\n")
+
 print "O ip e : %s . A porta e %s . O range e %s . O numero de samples e %s . O periodo de integracao e %s  \n" %( ip, porta, range_lido, n, p)
 
 tn = telnetlib.Telnet(ip, porta)
