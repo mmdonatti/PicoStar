@@ -8,7 +8,7 @@
 import telnetlib
 import datetime
 
-i		= raw_input("Qual IP para comunicacao Telnet?\n")
+ip		= raw_input("Qual IP para comunicacao Telnet?\n")
 porta 		= raw_input("Qual porta para comunicacao Telnet? Default: 5757 \n")
 range_lido 	= raw_input("Qual o range (r) selecionado? Opcoes: 0, 1, 2, 3, 4, 5, 6 e 7\n")
 n 		= raw_input("Qual o numero de samples (n) selecionado? Opcoes: 1...4096\n")
