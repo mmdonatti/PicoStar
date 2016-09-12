@@ -64,6 +64,6 @@ while True:
 				ch_treated[i] = 0.9957777778*ch_treated[i]
 			#else:
 			#	ch_treated[i] = 0
-		print "	%f	nA	%f	nA	%f	nA	%f	nA" % (ch_treated[0], ch_treated[1], ch_treated[2], ch_treated[3])
+		print "%f	nA	%f	nA	%f	nA	%f	nA" % (ch_treated[0], ch_treated[1], ch_treated[2], ch_treated[3])
 		if log_flag == 's':
-			file.write( str(datetime.datetime.now())+"		"+str(ch_treated[0])+"		nA	"+str(ch_treated[1])+"		nA	"+str(ch_treated[2])+"		nA	"+str(ch_treated[3])+"		nA\n" ) 
+			file.write( str(datetime.datetime.now())+"		"+str(round(ch_treated[0],13))+"		nA	"+str(ch_treated[1])+"		nA	"+str(ch_treated[2])+"		nA	"+str(ch_treated[3])+"		nA\n" ) 
