@@ -25,21 +25,21 @@ tn = telnetlib.Telnet(ip, porta)
 print "\n \nTelnet Communication On\n \n"
 
 if	range_lido == '7':
-	k	=	2100*42.85/(100.15)			#gain para r = 7
+	k	=	1.000888*2100*42.85/(100.15)			#gain para r = 7
 elif	range_lido == '6':
-	k	=	2100*42.85*1050.55/(900.2*100.15)	#gain para r = 6
+	k	=	1.000888*2100*42.85*1050.55/(900.2*100.15)	#gain para r = 6
 elif	range_lido == '5':
-	k	=	2100*42.85*1259.76/(900.2*100.15)	#gain para r = 5
+	k	=	1.0014*2100*42.85*1259.76/(900.2*100.15)	#gain para r = 5
 elif	range_lido == '4':
-	k	=	2100*42.45*1590.2/(900.2*100.15)	#gain para r = 4
+	k	=	1.0014*2100*42.45*1590.2/(900.2*100.15)		#gain para r = 4
 elif	range_lido == '3':
-	k	=	2100*42.85*2099.69/(900.2*100.15)	#gain para r = 3
+	k	=	1.00079*2100*42.85*2099.69/(900.2*100.15)	#gain para r = 3
 elif	range_lido == '2':
-	k	=	2100*42.85*3151.18/(900.2*100.15)	#gain para r = 2
+	k	=	1.0005*2100*42.85*3151.18/(900.2*100.15)	#gain para r = 2
 elif	range_lido == '1':
-	k	=	2100*42.85*6295.55/(900.2*100.15)	#gain para r = 1
+	k	=	1.0004991*2100*42.85*6295.55/(900.2*100.15)	#gain para r = 1
 elif	range_lido == '0':
-	k	=	2100*42.85*5953.53/(200.1*100.15)	#gain para r = 0
+	k	=	2100*42.85*5953.53/(200.1*100.15)		#gain para r = 0
 
 os		=	4430*float(n)				#offset
 k_int		=	(float(p))/3000				#gain multiplo do periodo de integracao 3k us
@@ -63,7 +63,7 @@ while True:
 				ch_treated[i] = (float(fields[i])-os)/(k_int*k*samples*k_new)-os_emp
 				ch_treated[i] = 0.9957777778*ch_treated[i]
 			if (ch_treated[i] < 0):
-				ch_treated[i] =1/1000000000000
+				ch_treated[i] = 0
 		print "%f	nA	%f	nA	%f	nA	%f	nA" % (ch_treated[0], ch_treated[1], ch_treated[2], ch_treated[3])
 		if log_flag == 's':
 			file.write(str(datetime.datetime.now())+"	"+str.format("{0:.9f}",ch_treated[0])+"	nA	"+str.format("{0:.9f}",ch_treated[1])+"	nA	"+str.format("{0:.9f}",ch_treated[2])+"	nA	"+str.format("{0:.9f}",ch_treated[3])+" nA\n" ) 
