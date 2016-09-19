@@ -3,7 +3,7 @@
 # ########	Software para testes do NSLS ELectrometer 	########
 # ########	Autor : Guilherme Teixeira Semissatto		########
 # ########	Grupo : GAE					########
-# ########	Ultima modificao: 09/09/2016			########
+# ########	Ultima modificao: 19/09/2016			########
 
 import telnetlib
 import datetime
@@ -31,20 +31,6 @@ print "O ip e : %s . A porta e %s . O range e %s . O numero de samples e %s . O 
 tn = telnetlib.Telnet(ip, porta)
 print "\n \nTelnet Communication On\n \n"
 
-# PyQtGraph setup
-
-#QtGui.QApplication.setGraphicsSystem('raster')
-#app = QtGui.QApplication([])
-#mw = QtGui.QMainWindow()
-#mw.resize(800,800)
-#win = pg.GraphicsWindow(title="4Ch current real data plotting")
-#win.resize(1000,600)
-#win.setWindowTitle('4Ch current real data plotting')
-
-# Enable antialiasing for prettier plots
-#pg.setConfigOptions(antialias=True)
-
-# End PyQtGraph setup
 
 if	range_lido == '7':
 	k	=	1.000888*2100*42.85/(100.15)			#gain para r = 7
@@ -66,13 +52,12 @@ elif	range_lido == '0':
 os			=	4430*float(n)				#offset
 k_int			=	(float(p))/3000				#gain multiplo do periodo de integracao 3k us
 samples			=	float(n)				#samples em float
-#os_emp			=	2*float(p)/(1000000)+ 0.23		#offset para calibracao
-os_emp			=	0
 ch_treated		=	[0,0,0,0]				#free vector to fill
 ch0_treated_saved	=	[]					#array to save data to plot
-tempo			=	[]
+tempo			=	[]					#array to save "time" to plot
 k_new			=	10.4331606217616/1.04901384809064
-auxiliar2		=	0
+auxiliar1		=	0					#aux variable to error filtering of reading data
+auxiliar2		=	0					#aux variable that counts number of samples read
 
 pw = pg.plot()
 
@@ -88,19 +73,17 @@ while True:
 			except ValueError:
 				auxiliar = 1
 			if (auxiliar == 0 and float(fields[i]) > 0 and len(fields[3]) == 11):			# necessita melhorar o comparador == 11
-				ch_treated[i] = (float(fields[i])-os)/(k_int*k*samples*k_new)-os_emp
+				ch_treated[i] = (float(fields[i])-os)/(k_int*k*samples*k_new)
 				ch_treated[i] = 0.9957777778*ch_treated[i]
 			if i == 0:
 				ch0_treated_saved.append(ch_treated[i])
 				tempo.append(auxiliar2)
-				auxiliar2 = auxiliar2+1
-				print auxiliar2
 			if (ch_treated[i] < 0):
-				ch_treated[i] = 0
-		print "%f	nA	%f	nA	%f	nA	%f	nA" % (ch_treated[0], ch_treated[1], ch_treated[2], ch_treated[3])
-		#print  ch0_treated_saved
-		#print tempo
-		if log_flag == 's':
-			file.write(str(datetime.datetime.now())+"	"+str.format("{0:.9f}",ch_treated[0])+"	nA	"+str.format("{0:.9f}",ch_treated[1])+"	nA	"+str.format("{0:.9f}",ch_treated[2])+"	nA	"+str.format("{0:.9f}",ch_treated[3])+" nA\n" ) 
+				ch_treated[i] = 0		
+		auxiliar2 = auxiliar2+1
+		
 		pw.plot(tempo, ch0_treated_saved, clear=True)
 		pg.QtGui.QApplication.processEvents()
+		print "%f	nA	%f	nA	%f	nA	%f	nA" % (ch_treated[0], ch_treated[1], ch_treated[2], ch_treated[3])
+		if log_flag == 's':
+			file.write(str(datetime.datetime.now())+"	"+str.format("{0:.9f}",ch_treated[0])+"	nA	"+str.format("{0:.9f}",ch_treated[1])+"	nA	"+str.format("{0:.9f}",ch_treated[2])+"	nA	"+str.format("{0:.9f}",ch_treated[3])+" nA\n" ) 
