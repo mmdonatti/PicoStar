@@ -72,19 +72,19 @@ ch_treated	=	[0,0,0,0]				#free vector to fill
 k_new		=	10.4331606217616/1.04901384809064
 
 # PyQtGraph Plot
-p6 = win.addPlot(title="Updating plot")
-curve = p6.plot(pen='y')
-data = np.random.normal(size=(10,1000))
-ptr = 0
-def update():
-	global curve, data, ptr, p6
-	curve.setData(data[ptr%10])
-	if ptr == 0:
-		p6.enableAutoRange('xy', False)  ## stop auto-scaling after the first data set is plotted
-	ptr += 1
-timer = QtCore.QTimer()
-timer.timeout.connect(update)
-timer.start(50)
+#p6 = win.addPlot(title="Updating plot")
+#curve = p6.plot(pen='y')
+#data = np.random.normal(size=(10,1000))
+#ptr = 0
+#def update():
+#	global curve, data, ptr, p6
+#	curve.setData(data[ptr%10])
+#	if ptr == 0:
+#		p6.enableAutoRange('xy', False)  ## stop auto-scaling after the first data set is plotted
+#	ptr += 1
+#timer = QtCore.QTimer()
+#timer.timeout.connect(update)
+#timer.start(50)
 
 ## Start Qt event loop unless running in interactive mode or using pyside.
 if __name__ == '__main__':
@@ -111,3 +111,4 @@ while True:
 		print "%f	nA	%f	nA	%f	nA	%f	nA" % (ch_treated[0], ch_treated[1], ch_treated[2], ch_treated[3])
 		if log_flag == 's':
 			file.write(str(datetime.datetime.now())+"	"+str.format("{0:.9f}",ch_treated[0])+"	nA	"+str.format("{0:.9f}",ch_treated[1])+"	nA	"+str.format("{0:.9f}",ch_treated[2])+"	nA	"+str.format("{0:.9f}",ch_treated[3])+" nA\n" ) 
+			p1 = win.addPlot(title="Basic array plotting", y=ch_treate[0])
