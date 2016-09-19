@@ -59,10 +59,11 @@ k_new			=	10.4331606217616/1.04901384809064
 auxiliar1		=	0					#aux variable to error filtering of reading data
 auxiliar2		=	0					#aux variable that counts number of samples read
 
-pw = pg.plot()
-win = pg.GraphicsWindow(title="Currente (nA) vs sample")
+#pw = pg.plot()
+win = pg.GraphicsWindow(title="Current (nA) vs sample")
 win.resize(1000,600)
-win.setWindowTitle('Currente (nA) vs sample')
+win.setWindowTitle('Current (nA) vs sample')
+p1 = win.addPlot(title="Current (nA) vs sample")
 
 while True:
 	if len(tn.read_some()) == 44:
@@ -85,7 +86,8 @@ while True:
 				ch_treated[i] = 0		
 		auxiliar2 = auxiliar2+1
 		
-		pw.plot(tempo, ch0_treated_saved, clear=True, name= "Currente (nA) vs sample")
+		
+		p1.plot(tempo, ch0_treated_saved, clear=True)
 		pg.QtGui.QApplication.processEvents()
 		print "%f	nA	%f	nA	%f	nA	%f	nA" % (ch_treated[0], ch_treated[1], ch_treated[2], ch_treated[3])
 		if log_flag == 's':
