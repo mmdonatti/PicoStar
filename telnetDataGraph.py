@@ -60,6 +60,9 @@ auxiliar1		=	0					#aux variable to error filtering of reading data
 auxiliar2		=	0					#aux variable that counts number of samples read
 
 pw = pg.plot()
+win = pg.GraphicsWindow(title="Currente (nA) vs sample")
+win.resize(1000,600)
+win.setWindowTitle('Currente (nA) vs sample')
 
 while True:
 	if len(tn.read_some()) == 44:
