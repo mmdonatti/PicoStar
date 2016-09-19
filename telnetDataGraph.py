@@ -34,15 +34,15 @@ print "\n \nTelnet Communication On\n \n"
 # PyQtGraph setup
 
 #QtGui.QApplication.setGraphicsSystem('raster')
-app = QtGui.QApplication([])
+#app = QtGui.QApplication([])
 #mw = QtGui.QMainWindow()
 #mw.resize(800,800)
-win = pg.GraphicsWindow(title="4Ch current real data plotting")
-win.resize(1000,600)
-win.setWindowTitle('4Ch current real data plotting')
+#win = pg.GraphicsWindow(title="4Ch current real data plotting")
+#win.resize(1000,600)
+#win.setWindowTitle('4Ch current real data plotting')
 
 # Enable antialiasing for prettier plots
-pg.setConfigOptions(antialias=True)
+#pg.setConfigOptions(antialias=True)
 
 # End PyQtGraph setup
 
