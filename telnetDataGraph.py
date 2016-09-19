@@ -68,6 +68,7 @@ win.resize(1000,600)
 win.setWindowTitle('Current (nA) vs sample')
 p0 = win.addPlot(title="Current (nA) vs sample")
 p1 = win.addPlot(title="Current (nA) vs sample")
+win.nextRow()
 p2 = win.addPlot(title="Current (nA) vs sample")
 p3 = win.addPlot(title="Current (nA) vs sample")
 # End PyQtGraph Setup
