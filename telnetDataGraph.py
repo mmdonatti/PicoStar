@@ -70,7 +70,7 @@ samples		=	float(n)				#samples em float
 os_emp		=	0
 ch_treated	=	[0,0,0,0]				#free vector to fill
 k_new		=	10.4331606217616/1.04901384809064
-tempo		=	np.linspace(0, 100, 100)
+tempo		=	np.linspace(0, 4, 4)
 # PyQtGraph Plot
 #p6 = win.addPlot(title="Updating plot")
 #curve = p6.plot(pen='y')
