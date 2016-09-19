@@ -98,7 +98,7 @@ while True:
 				ch_treated[i] = 0		
 		tempo.append(auxiliar2)
 		auxiliar2 = auxiliar2+1
-		
+		#Dar uma olha em PlotDataItem http://www.pyqtgraph.org/documentation/graphicsItems/plotcurveitem.html
 		# PyQtGraph Plots
 		p0.plot(tempo, ch0_treated_saved, clear=True)
 		p1.plot(tempo, ch1_treated_saved, clear=True)
