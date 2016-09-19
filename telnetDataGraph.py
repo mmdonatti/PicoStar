@@ -85,7 +85,7 @@ while True:
 				ch_treated[i] = 0		
 		auxiliar2 = auxiliar2+1
 		
-		pw.plot(tempo, ch0_treated_saved, clear=True, title= "Currente (nA) vs sample")
+		pw.plot(tempo, ch0_treated_saved, clear=True, name= "Currente (nA) vs sample")
 		pg.QtGui.QApplication.processEvents()
 		print "%f	nA	%f	nA	%f	nA	%f	nA" % (ch_treated[0], ch_treated[1], ch_treated[2], ch_treated[3])
 		if log_flag == 's':
