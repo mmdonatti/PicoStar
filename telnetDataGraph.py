@@ -70,7 +70,7 @@ samples		=	float(n)				#samples em float
 os_emp		=	0
 ch_treated	=	[0,0,0,0]				#free vector to fill
 k_new		=	10.4331606217616/1.04901384809064
-tempo		=	0
+tempo		=	np.linspace(0, 100, 100)
 # PyQtGraph Plot
 #p6 = win.addPlot(title="Updating plot")
 #curve = p6.plot(pen='y')
@@ -109,7 +109,7 @@ while True:
 			if (ch_treated[i] < 0):
 				ch_treated[i] = 0
 		print "%f	nA	%f	nA	%f	nA	%f	nA" % (ch_treated[0], ch_treated[1], ch_treated[2], ch_treated[3])
-		tempo += 1 
+		#tempo += 1 
 		if log_flag == 's':
 			file.write(str(datetime.datetime.now())+"	"+str.format("{0:.9f}",ch_treated[0])+"	nA	"+str.format("{0:.9f}",ch_treated[1])+"	nA	"+str.format("{0:.9f}",ch_treated[2])+"	nA	"+str.format("{0:.9f}",ch_treated[3])+" nA\n" ) 
 		pw.plot(tempo, ch_treated, clear=True)
