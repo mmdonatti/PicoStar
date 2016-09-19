@@ -112,5 +112,5 @@ while True:
 		tempo += 1 
 		if log_flag == 's':
 			file.write(str(datetime.datetime.now())+"	"+str.format("{0:.9f}",ch_treated[0])+"	nA	"+str.format("{0:.9f}",ch_treated[1])+"	nA	"+str.format("{0:.9f}",ch_treated[2])+"	nA	"+str.format("{0:.9f}",ch_treated[3])+" nA\n" ) 
-		pw.plot(x, ch_treated[0], clear=True)
+		pw.plot(tempo, ch_treated[0], clear=True)
 		pg.QtGui.QApplication.processEvents()
