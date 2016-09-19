@@ -63,40 +63,23 @@ elif	range_lido == '1':
 elif	range_lido == '0':
 	k	=	2100*42.85*5953.53/(200.1*100.15)		#gain para r = 0
 
-os		=	4430*float(n)				#offset
-k_int		=	(float(p))/3000				#gain multiplo do periodo de integracao 3k us
-samples		=	float(n)				#samples em float
-#os_emp		=	2*float(p)/(1000000)+ 0.23		#offset para calibracao
-os_emp		=	0
-ch_treated	=	[0,0,0,0]				#free vector to fill
-k_new		=	10.4331606217616/1.04901384809064
-tempo		=	np.linspace(0, 4, 4)
-# PyQtGraph Plot
-#p6 = win.addPlot(title="Updating plot")
-#curve = p6.plot(pen='y')
-#data = np.random.normal(size=(10,1000))
-#ptr = 0
-#def update():
-#	global curve, data, ptr, p6
-#	curve.setData(data[ptr%10])
-#	if ptr == 0:
-#		p6.enableAutoRange('xy', False)  ## stop auto-scaling after the first data set is plotted
-#	ptr += 1
-#timer = QtCore.QTimer()
-#timer.timeout.connect(update)
-#timer.start(50)
+os			=	4430*float(n)				#offset
+k_int			=	(float(p))/3000				#gain multiplo do periodo de integracao 3k us
+samples			=	float(n)				#samples em float
+#os_emp			=	2*float(p)/(1000000)+ 0.23		#offset para calibracao
+os_emp			=	0
+ch_treated		=	[0,0,0,0]				#free vector to fill
+ch0_treated_saved	=	[]					#array to save data to plot
+tempo			=	[]
+k_new			=	10.4331606217616/1.04901384809064
+
 pw = pg.plot()
-## Start Qt event loop unless running in interactive mode or using pyside.
-#if __name__ == '__main__':
-#    import sys
-#    if (sys.flags.interactive != 1) or not hasattr(QtCore, 'PYQT_VERSION'):
-#        QtGui.QApplication.instance().exec_()
-# End PyQtGraph Plot
 
 while True:
 	if len(tn.read_some()) == 44:
 		data = tn.read_some()
 		fields = data.split(' ')
+		auxiliar2 = 0
 		for i in range(4):
 			auxiliar = 0
 			try:
@@ -106,11 +89,15 @@ while True:
 			if (auxiliar == 0 and float(fields[i]) > 0 and len(fields[3]) == 11):			# necessita melhorar o comparador == 11
 				ch_treated[i] = (float(fields[i])-os)/(k_int*k*samples*k_new)-os_emp
 				ch_treated[i] = 0.9957777778*ch_treated[i]
+			if i == 0:
+				ch0_treated_saved[auxiliar2] = ch_treated[i]
+				tempo[auxiliar2] = auxiliar2
+				auxiliar2 += auxiliar2
 			if (ch_treated[i] < 0):
 				ch_treated[i] = 0
 		print "%f	nA	%f	nA	%f	nA	%f	nA" % (ch_treated[0], ch_treated[1], ch_treated[2], ch_treated[3])
-		#tempo += 1 
+		 
 		if log_flag == 's':
 			file.write(str(datetime.datetime.now())+"	"+str.format("{0:.9f}",ch_treated[0])+"	nA	"+str.format("{0:.9f}",ch_treated[1])+"	nA	"+str.format("{0:.9f}",ch_treated[2])+"	nA	"+str.format("{0:.9f}",ch_treated[3])+" nA\n" ) 
-		pw.plot(tempo, ch_treated, clear=True)
+		pw.plot(tempo, ch_treated_saved, clear=True)
 		pg.QtGui.QApplication.processEvents()
