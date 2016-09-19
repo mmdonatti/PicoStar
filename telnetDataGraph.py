@@ -76,10 +76,11 @@ k_new			=	10.4331606217616/1.04901384809064
 pw = pg.plot()
 
 while True:
+	auxiliar2 = 0
 	if len(tn.read_some()) == 44:
 		data = tn.read_some()
 		fields = data.split(' ')
-		auxiliar2 = 0
+		
 		for i in range(4):
 			auxiliar = 0
 			try:
@@ -92,7 +93,7 @@ while True:
 			if i == 0:
 				ch0_treated_saved.append(ch_treated[i])
 				tempo.append(auxiliar2)
-				auxiliar2 += 1
+				auxiliar2 = auxiliar2+1
 			if (ch_treated[i] < 0):
 				ch_treated[i] = 0
 		print "%f	nA	%f	nA	%f	nA	%f	nA" % (ch_treated[0], ch_treated[1], ch_treated[2], ch_treated[3])
