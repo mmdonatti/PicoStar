@@ -66,11 +66,11 @@ auxiliar2		=	0					#aux variable that counts number of samples read
 win = pg.GraphicsWindow(title="Current (nA) vs sample")
 win.resize(1000,600)
 win.setWindowTitle('Current (nA) vs sample')
-p0 = win.addPlot(title="Current (nA) vs sample")
-p1 = win.addPlot(title="Current (nA) vs sample")
+p0 = win.addPlot(title="Ch0: Current (nA) vs sample")
+p1 = win.addPlot(title="Ch1: Current (nA) vs sample")
 win.nextRow()
-p2 = win.addPlot(title="Current (nA) vs sample")
-p3 = win.addPlot(title="Current (nA) vs sample")
+p2 = win.addPlot(title="Ch2: Current (nA) vs sample")
+p3 = win.addPlot(title="Ch3: Current (nA) vs sample")
 # End PyQtGraph Setup
 
 while True:
@@ -100,12 +100,13 @@ while True:
 		tempo.append(auxiliar2)
 		auxiliar2 = auxiliar2+1
 		
-		
+		# PyQtGraph Plots
 		p0.plot(tempo, ch0_treated_saved, clear=True)
 		p1.plot(tempo, ch1_treated_saved, clear=True)
 		p2.plot(tempo, ch2_treated_saved, clear=True)
 		p3.plot(tempo, ch3_treated_saved, clear=True)
 		pg.QtGui.QApplication.processEvents()
+		# End PyQtGraph Plots
 		#print "%f	nA	%f	nA	%f	nA	%f	nA" % (ch_treated[0], ch_treated[1], ch_treated[2], ch_treated[3])
 		if log_flag == 's':
 			file.write(str(datetime.datetime.now())+"	"+str.format("{0:.9f}",ch_treated[0])+"	nA	"+str.format("{0:.9f}",ch_treated[1])+"	nA	"+str.format("{0:.9f}",ch_treated[2])+"	nA	"+str.format("{0:.9f}",ch_treated[3])+" nA\n" ) 
