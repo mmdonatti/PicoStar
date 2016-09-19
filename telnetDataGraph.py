@@ -54,16 +54,23 @@ k_int			=	(float(p))/3000				#gain multiplo do periodo de integracao 3k us
 samples			=	float(n)				#samples em float
 ch_treated		=	[0,0,0,0]				#free vector to fill
 ch0_treated_saved	=	[]					#array to save data to plot
+ch1_treated_saved	=	[]					#array to save data to plot
+ch2_treated_saved	=	[]					#array to save data to plot
+ch3_treated_saved	=	[]					#array to save data to plot
 tempo			=	[]					#array to save "time" to plot
 k_new			=	10.4331606217616/1.04901384809064
 auxiliar1		=	0					#aux variable to error filtering of reading data
 auxiliar2		=	0					#aux variable that counts number of samples read
 
-#pw = pg.plot()
+# PyQtGraph Setup
 win = pg.GraphicsWindow(title="Current (nA) vs sample")
 win.resize(1000,600)
 win.setWindowTitle('Current (nA) vs sample')
+p0 = win.addPlot(title="Current (nA) vs sample")
 p1 = win.addPlot(title="Current (nA) vs sample")
+p2 = win.addPlot(title="Current (nA) vs sample")
+p3 = win.addPlot(title="Current (nA) vs sample")
+# End PyQtGraph Setup
 
 while True:
 	if len(tn.read_some()) == 44:
@@ -81,13 +88,22 @@ while True:
 				ch_treated[i] = 0.9957777778*ch_treated[i]
 			if i == 0:
 				ch0_treated_saved.append(ch_treated[i])
-				tempo.append(auxiliar2)
+			if i == 1:
+				ch1_treated_saved.append(ch_treated[i])
+			if i == 2:
+				ch2_treated_saved.append(ch_treated[i])
+			if i == 3:
+				ch3_treated_saved.append(ch_treated[i])
 			if (ch_treated[i] < 0):
 				ch_treated[i] = 0		
+		tempo.append(auxiliar2)
 		auxiliar2 = auxiliar2+1
 		
 		
-		p1.plot(tempo, ch0_treated_saved, clear=True)
+		p0.plot(tempo, ch0_treated_saved, clear=True)
+		p1.plot(tempo, ch1_treated_saved, clear=True)
+		p2.plot(tempo, ch2_treated_saved, clear=True)
+		p3.plot(tempo, ch3_treated_saved, clear=True)
 		pg.QtGui.QApplication.processEvents()
 		print "%f	nA	%f	nA	%f	nA	%f	nA" % (ch_treated[0], ch_treated[1], ch_treated[2], ch_treated[3])
 		if log_flag == 's':
