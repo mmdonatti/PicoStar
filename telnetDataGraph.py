@@ -92,7 +92,7 @@ while True:
 			if i == 0:
 				ch0_treated_saved.append(ch_treated[i])
 				tempo.append(auxiliar2)
-				auxiliar2 += auxiliar2
+				auxiliar2 += 1
 			if (ch_treated[i] < 0):
 				ch_treated[i] = 0
 		print "%f	nA	%f	nA	%f	nA	%f	nA" % (ch_treated[0], ch_treated[1], ch_treated[2], ch_treated[3])
