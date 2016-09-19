@@ -69,8 +69,8 @@ samples			=	float(n)				#samples em float
 #os_emp			=	2*float(p)/(1000000)+ 0.23		#offset para calibracao
 os_emp			=	0
 ch_treated		=	[0,0,0,0]				#free vector to fill
-ch0_treated_saved	=	[]					#array to save data to plot
-tempo			=	[]
+ch0_treated_saved	=	[0]					#array to save data to plot
+tempo			=	[0]
 k_new			=	10.4331606217616/1.04901384809064
 
 pw = pg.plot()
@@ -99,5 +99,5 @@ while True:
 		 
 		if log_flag == 's':
 			file.write(str(datetime.datetime.now())+"	"+str.format("{0:.9f}",ch_treated[0])+"	nA	"+str.format("{0:.9f}",ch_treated[1])+"	nA	"+str.format("{0:.9f}",ch_treated[2])+"	nA	"+str.format("{0:.9f}",ch_treated[3])+" nA\n" ) 
-		pw.plot(tempo, ch_treated_saved, clear=True)
+		pw.plot(tempo, ch0_treated_saved, clear=True)
 		pg.QtGui.QApplication.processEvents()
