@@ -90,8 +90,8 @@ while True:
 				ch_treated[i] = (float(fields[i])-os)/(k_int*k*samples*k_new)-os_emp
 				ch_treated[i] = 0.9957777778*ch_treated[i]
 			if i == 0:
-				ch0_treated_saved[auxiliar2] = ch_treated[i]
-				tempo[auxiliar2] = auxiliar2
+				ch0_treated_saved.append(ch_treated[i])
+				tempo.append(auxiliar2)
 				auxiliar2 += auxiliar2
 			if (ch_treated[i] < 0):
 				ch_treated[i] = 0
