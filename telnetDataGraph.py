@@ -85,8 +85,7 @@ while True:
 			except ValueError:
 				auxiliar = 1
 			if (auxiliar == 0 and float(fields[i]) > 0 and len(fields[3]) == 11):			# necessita melhorar o comparador == 11
-				ch_treated[i] = (float(fields[i])-os)/(k_int*k*samples*k_new)
-				ch_treated[i] = 0.9957777778*ch_treated[i]
+				ch_treated[i] = 0.9957777778*(float(fields[i])-os)/(k_int*k*samples*k_new)
 			if i == 0:
 				ch0_treated_saved.append(ch_treated[i])
 			if i == 1:
