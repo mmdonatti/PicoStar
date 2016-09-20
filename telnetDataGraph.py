@@ -100,6 +100,7 @@ while True:
 		auxiliar2 = auxiliar2+1
 		
 		#Dar uma olha em PlotDataItem http://www.pyqtgraph.org/documentation/graphicsItems/plotcurveitem.html
+		#Dar uma olhada no esquema de update plot http://stackoverflow.com/questions/26994120/multiple-updating-plot-with-pyqtgraph-in-python
 		# PyQtGraph Plots
 		p0.plot(ch0_treated_saved, clear=True)
 		p1.plot(ch1_treated_saved, clear=True)
