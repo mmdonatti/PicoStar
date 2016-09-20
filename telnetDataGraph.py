@@ -57,7 +57,7 @@ ch0_treated_saved	=	[]					#array to save data to plot
 ch1_treated_saved	=	[]					#array to save data to plot
 ch2_treated_saved	=	[]					#array to save data to plot
 ch3_treated_saved	=	[]					#array to save data to plot
-tempo			=	np.zeros(1000,dtype=float)		#array to save "time" to plot
+#tempo			=	np.zeros(1000,dtype=float)		#array to save "time" to plot
 k_new			=	10.4331606217616/1.04901384809064
 auxiliar1		=	0					#aux variable to error filtering of reading data
 auxiliar2		=	0					#aux variable that counts number of samples read
@@ -96,7 +96,7 @@ while True:
 				ch3_treated_saved.append(ch_treated[i])
 			if (ch_treated[i] < 0):
 				ch_treated[i] = 0		
-		tempo[auxiliar2]=auxiliar2
+		#tempo[auxiliar2]=auxiliar2
 		auxiliar2 = auxiliar2+1
 		
 		#Dar uma olha em PlotDataItem http://www.pyqtgraph.org/documentation/graphicsItems/plotcurveitem.html
