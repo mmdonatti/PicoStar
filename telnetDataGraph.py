@@ -57,7 +57,7 @@ ch0_treated_saved	=	np.zeros(1000,dtype=float)		#array to save data to plot
 ch1_treated_saved	=	np.zeros(1000,dtype=float)		#array to save data to plot
 ch2_treated_saved	=	np.zeros(1000,dtype=float)		#array to save data to plot
 ch3_treated_saved	=	np.zeros(1000,dtype=float)		#array to save data to plot
-tempo			=	[]					#array to save "time" to plot
+tempo			=	np.zeros(1000,dtype=float)		#array to save "time" to plot
 k_new			=	10.4331606217616/1.04901384809064
 auxiliar1		=	0					#aux variable to error filtering of reading data
 auxiliar2		=	0					#aux variable that counts number of samples read
