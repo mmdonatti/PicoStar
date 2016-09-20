@@ -44,7 +44,6 @@ elif	range_lido == '0':
 os		=	4430*float(n)				#offset
 k_int		=	(float(p))/3000				#gain multiplo do periodo de integracao 3k us
 samples		=	float(n)				#samples em float
-#os_emp		=	2*float(p)/(1000000)+ 0.23		#offset para calibracao
 os_emp		=	0
 ch_treated	=	[0,0,0,0]				#free vector to fill
 k_new		=	10.4331606217616/1.04901384809064
