@@ -100,7 +100,8 @@ while True:
 		auxiliar2 = auxiliar2+1
 		#Dar uma olha em PlotDataItem http://www.pyqtgraph.org/documentation/graphicsItems/plotcurveitem.html
 		# PyQtGraph Plots
-		p0.plot(tempo, ch0_treated_saved, clear=True)
+		#p0.plot(tempo, ch0_treated_saved, clear=True)
+		p0.PlotCurveItem(x = tempo, y = ch0_treated_saved)
 		p1.plot(tempo, ch1_treated_saved, clear=True)
 		p2.plot(tempo, ch2_treated_saved, clear=True)
 		p3.plot(tempo, ch3_treated_saved, clear=True)
