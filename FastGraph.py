@@ -79,7 +79,7 @@ curve3 = p3.plot()
 
 indx = 0
 def update():
-    global curve1, curve2, curve3, indx, ch0_treated_saved,ch1_treated_saved,ch2_treated_saved
+    global curve1, curve2, curve3, indx, ch0_treated_saved,ch1_treated_saved,ch2_treated_saved,auxiliar2
 
     #readData= readfun()        #function that reads data from the sensor it returns a list of 3 elements as the y-coordinates for the updating plots
     if len(tn.read_some()) == 44:
