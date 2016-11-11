@@ -7,6 +7,7 @@
 
 import telnetlib
 import datetime
+import os.path
 
 ip		= raw_input("Qual IP para comunicacao Telnet?\n")
 porta 		= raw_input("Qual porta para comunicacao Telnet? Default: 5757 \n")
@@ -15,10 +16,10 @@ n 		= raw_input("Qual o numero de samples (n) selecionado? Opcoes: 1...4096\n")
 p 		= raw_input("Qual periodo de integracao (p) em us? Opcoes: 400...100000\n")
 log_flag	= raw_input("Deseja salvar os dados ? (s/n)\n")
 if log_flag == 's':
-	filename	 = raw_input("Qual nome do arquivo para salvar os dados? Ex.: log.txt\n")
-	file = open(logs\filename, 'a')
+	filename = raw_input("Qual nome do arquivo para salvar os dados? Ex.: log.txt\n")
+	filepath = os.path.join('logs/', filename)
+	file = open(filepath, 'a')
 	file.write("\n\n\n"+"NSLS Electrometer log file from "+str(datetime.datetime.now())+"\n\n\n")
-
 print "O ip e : %s . A porta e %s . O range e %s . O numero de samples e %s . O periodo de integracao e %s  \n" %( ip, porta, range_lido, n, p)
 
 tn = telnetlib.Telnet(ip, porta)
