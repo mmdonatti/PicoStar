@@ -23,7 +23,8 @@ p 		= raw_input("Qual periodo de integracao (p) em us? Opcoes: 400...100000\n")
 log_flag	= raw_input("Deseja salvar os dados ? (s/n)\n")
 if log_flag == 's':
 	filename	 = raw_input("Qual nome do arquivo para salvar os dados? Ex.: log.txt\n")
-	file = open(filename, 'a')
+	filepath = os.path.join('logs/', filename)
+	file = open(filepath, 'a')	
 	file.write("\n\n\n"+"NSLS Electrometer log file from "+str(datetime.datetime.now())+"\n\n\n")
 
 print "O ip e : %s . A porta e %s . O range e %s . O numero de samples e %s . O periodo de integracao e %s  \n" %( ip, porta, range_lido, n, p)
