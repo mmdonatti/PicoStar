@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
 
-git add .
-git commit -m "Adding log files"
-git push
+sudogit add .
+sudo git commit -m "Adding log files"
+sudo git push

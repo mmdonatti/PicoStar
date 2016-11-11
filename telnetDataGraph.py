@@ -7,6 +7,7 @@
 
 import telnetlib
 import datetime
+import os
 
 # PyQtGraph Import
 from pyqtgraph.Qt import QtGui, QtCore
