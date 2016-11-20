@@ -5,6 +5,8 @@ $sudo apt-get update
 
 $sudo apt-get install git
 
+$sudo git clone https://github.com/semissatto2/Electrometer.git
+
 $sudo apt-get install python-pyqtgraph
 
 OR
