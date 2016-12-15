@@ -1,9 +1,9 @@
 #!/usr/bin/python
 
-# ########	Software para testes do NSLS ELectrometer 	########
-# ########	Autor : Guilherme Teixeira Semissatto		########
-# ########	Grupo : GAE					########
-# ########	Ultima modificao: 09/09/2016			########
+"""	Software para testes do NSLS ELectrometer 		########
+ ########	Autor : Guilherme Teixeira Semissatto		########
+ ########	Grupo : GAE					########
+ ########	Ultima modificao: 09/09/2016			"""
 
 import telnetlib
 import datetime
